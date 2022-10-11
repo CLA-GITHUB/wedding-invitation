@@ -6,20 +6,31 @@ import QRCode from "react-qr-code";
 import { useRouter } from "next/router";
 
 const weddingName = "Someone's";
-const invites = ["Livingstone", "Valiant", "Jedidiah", "Delightsome"];
+const invites = ["Livingstone", "Holla"];
 
-const QRComponent: React.FC = () => {
-  return <QRCode size={130} value='https://claa.vercel.app' />;
+interface QRProps {
+  guest: string;
+}
+
+const QRComponent: React.FC<QRProps> = ({ guest }) => {
+  const uri =
+    process.env.NODE_ENV === "production"
+      ? "https://my-wedding-invites.vecel.app/"
+      : "http://localhost:3000/";
+
+  let url = uri + guest;
+
+  return <QRCode size={130} value={url} />;
 };
 
 const Guest: NextPage = () => {
   const router = useRouter();
   const { guest } = router.query;
+
   const present = invites.filter(
     (itm) => itm.toLowerCase() === guest?.toString().toLowerCase()
   );
-  console.log(present);
-  if (present.length === 0) {
+  if (guest && present.length === 0) {
     return (
       <div className='h-screen w-screen flex justify-center items-center bg-pink-300'>
         <div className='max-w-sm mx-auto p-8 '>
@@ -65,7 +76,9 @@ const Guest: NextPage = () => {
             <p className='text-right italic'>-coursery couples 👩‍❤️‍👨</p>
           </div>
           <div className='mt-8' />
-          <QRComponent />
+          {guest !== undefined && typeof guest == "string" && (
+            <QRComponent guest={guest as string} />
+          )}
         </div>
       </div>
     </div>
