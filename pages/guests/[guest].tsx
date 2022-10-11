@@ -15,7 +15,7 @@ interface QRProps {
 const QRComponent: React.FC<QRProps> = ({ guest }) => {
   const uri =
     process.env.NODE_ENV === "production"
-      ? "https://my-wedding-invites.vercel.app/"
+      ? "https://my-wedding-invites.vercel.app/guests/"
       : "http://localhost:3000/";
 
   let url = uri + guest;
