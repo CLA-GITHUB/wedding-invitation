@@ -51,7 +51,7 @@ const Guest: NextPage = () => {
     );
   }
   return (
-    <div className='bg-pink-200 h-screen max-w-screen font-opensans flex justify-center items-center'>
+    <div className='bg-pink-200 px-5 h-screen max-w-screen font-opensans flex justify-center items-center'>
       <Head>
         <title>Welcome to {weddingName} wedding</title>
       </Head>

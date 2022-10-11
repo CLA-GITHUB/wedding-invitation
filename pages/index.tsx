@@ -8,12 +8,12 @@ const weddingName = "Someone's";
 
 const Home: NextPage = () => {
   return (
-    <div className='bg-pink-200 h-screen max-w-screen font-opensans flex justify-center items-center'>
+    <div className='bg-pink-200 px-5 h-screen max-w-screen font-opensans flex justify-center items-center'>
       <Head>
         <title>Welcome to {weddingName} wedding</title>
       </Head>
 
-      <div className='max-w-sm mx-auto bg-green-50 rounded-lg'>
+      <div className='max-w-xs mx-auto bg-green-50 rounded-lg'>
         <div className='flex flex-col items-center justify-center text-center  p-10'>
           <Image
             src={"/wedding.svg"}
